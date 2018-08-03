@@ -1,0 +1,98 @@
+@import "libs"
+
+::placeholder
+	color: #666
+
+::selection
+	color: #fff
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	background-color: #2A56AF
+	background-image: linear-gradient(to bottom, #2A56AF 0%, #2A56AF 100%)
+	overflow-x: hidden
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.text-center
+	text-align: center
+
+b, strong
+	font-weight: bold
+
+.page-header
+	&-bottom
+		height: 110px
+		padding-top: 10px
+		background: linear-gradient(#2A56AF, #3265B8, #4D98D6, #6DD5FA)
+		img
+			display: block
+			margin: 0	auto
+			max-width: 206px
+
+.menu
+	padding: 30px 1px 30px 16px
+	background-color: #f6fafc
+.menu-block
+	&__title
+		font-size: 13px
+		text-transform: uppercase
+	&__items
+		display: flex
+		flex-wrap: wrap
+		
+		margin-bottom: 11px
+	&__item
+		@media (max-width: 466px)
+			min-width: 123px
+			margin-right: 9px
+		@media (max-width: 413px)
+			min-width: 106px
+		@media (max-width: 362px)
+			min-width: 90px
+		display: block
+		min-width: 130px
+		padding: 8px 5px 15px
+		margin-bottom: 9px
+		margin-right: 13px
+		background-color: #fff
+		border-radius: 6px
+		box-shadow: 0 2px 5px 0 rgba(0, 11, 50, 0.12)
+		text-decoration: none
+		color: #222
+		&:focus, &:hover
+			text-decoration: none
+			color: #222
+			background-color: rgba(#2A56AF, 0.12)
+		&-img
+			width: 64px
+			height: 64px
+			margin: 0 auto 9px
+			border-radius: 50%
+			background-color: #F4F4F4
+			display: flex
+			justify-content: center
+			align-items: center
+			img
+				max-width: 32px
+				max-height: 32px
+		&-title
+			font-size: 13px
+			line-height: 14px
+			text-align: center
+			word-wrap: break-word
