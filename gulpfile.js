@@ -13,7 +13,8 @@ var gulp          = require('gulp'),
 		pngquant    = require('imagemin-pngquant'),
 		autoprefixer  = require('gulp-autoprefixer'),
 		notify        = require("gulp-notify"),
-		rsync         = require('gulp-rsync');
+		rsync         = require('gulp-rsync'),
+		inlinesource = require('gulp-inline-source');
 
 gulp.task('browser-sync', function() {
 	browsersync({
@@ -97,5 +98,13 @@ gulp.task('build', ['clean','styles', 'js', 'img'], function() {
 
 	var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
 	.pipe(gulp.dest('dist'));
+
+});
+
+gulp.task('build-inline', ['clean'], function() {
+
+	var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
+		.pipe(inlinesource())
+		.pipe(gulp.dest('dist'));
 
 });
