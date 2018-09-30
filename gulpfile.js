@@ -14,7 +14,8 @@ var gulp          = require('gulp'),
 		autoprefixer  = require('gulp-autoprefixer'),
 		notify        = require("gulp-notify"),
 		rsync         = require('gulp-rsync'),
-		inlinesource = require('gulp-inline-source');
+		inlinesource = require('gulp-inline-source'),
+		base64 = require('gulp-base64');
 
 gulp.task('browser-sync', function() {
 	browsersync({
@@ -31,6 +32,7 @@ gulp.task('browser-sync', function() {
 gulp.task('styles', function() {
 	return gulp.src('app/'+syntax+'/**/*.'+syntax+'')
 	.pipe(sass({ outputStyle: 'expand' }).on("error", notify.onError()))
+	.pipe(base64())
 	.pipe(rename({ suffix: '.min', prefix : '' }))
 	.pipe(autoprefixer(['last 15 versions']))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Opt., comment out when debugging
@@ -101,7 +103,7 @@ gulp.task('build', ['clean','styles', 'js', 'img'], function() {
 
 });
 
-gulp.task('build-inline', ['clean'], function() {
+gulp.task('build-inline', ['build'], function() {
 
 	var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
 		.pipe(inlinesource())
