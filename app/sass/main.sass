@@ -83,6 +83,14 @@ b, strong
 		font-weight: 500
 
 .menu-block
+	margin: 0 auto
+	@media (max-width: 466px)
+		width: 398px
+	@media (max-width: 413px)
+		width: 359px
+	@media (max-width: 362px)
+		width: 304px
+
 	&__title
 		font-size: 13px
 		text-transform: uppercase
@@ -93,16 +101,18 @@ b, strong
 		display: flex
 		flex-wrap: wrap
 		margin-bottom: 11px
+
+		
 	&__item
 		@media (max-width: 466px)
-			min-width: 123px
+			width: 123px
 			margin-right: 9px
 		@media (max-width: 413px)
-			min-width: 106px
+			width: 106px
 		@media (max-width: 362px)
-			min-width: 90px
+			width: 90px
 		display: block
-		min-width: 130px
+		width: 130px
 		padding: 8px 5px 15px
 		margin-bottom: 9px
 		margin-right: 13px
