@@ -103,7 +103,7 @@ gulp.task('build', ['clean','styles', 'js', 'img'], function() {
 
 });
 
-gulp.task('build-inline', ['build'], function() {
+gulp.task('build-inline', ['clean'], function() {
 
 	var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
 		.pipe(inlinesource())
