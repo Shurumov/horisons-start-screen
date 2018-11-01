@@ -8,7 +8,7 @@
 
 body
 	background-image: url('../img/forest.png')
-	background-repeat: no-repeat
+	background-repeat: repeat-x
 	background-size: contain
 	font-size: 16px
 	min-width: 320px
@@ -147,3 +147,96 @@ b, strong
 			text-align: center
 			word-wrap: break-word
 
+.loader 
+	border: 6px solid #c4c4c4
+	border-top: 6px solid #A9C54C
+	border-radius: 50%
+	animation: spin 1s linear infinite
+	position: fixed
+	top: 50%
+	left: 50%
+	width: 50px
+	height: 50px
+	margin-top: -25px
+	margin-left: -25px
+	z-index: 50
+	&-background 
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		z-index: 50
+
+@keyframes spin 
+	0% 
+		transform: rotate(0)
+	100% 
+		transform: rotate(360deg)
+
+.form_wrapper
+	display: block
+	max-width: 300px
+	margin: 90px auto 0
+
+form
+	width: 100%
+
+.group 
+	position: relative
+	margin: 24px 0
+	input 
+		background: none
+		padding: 10px 10px 10px 5px
+		color: #373737
+		font-size: 16px
+		display: block
+		height: 32px
+		width: 100%
+		border: none
+		border-radius: 0
+		border-bottom: 1px solid rgba(200, 200, 204, 0.5)
+		transition: 300ms ease all
+
+	input:focus 
+		border-bottom: 2px solid #04B19F
+		transition: 300ms ease all
+
+	input:focus~label, input:valid~label 
+		top: -14px
+		font-size: 12px
+
+  input:focus~label 
+		color: #A9C54C
+
+	label 
+		font-size: 16px
+		color: #80808C
+		position: absolute
+		left: 5px
+		top: 6px
+		transition: 300ms ease all
+		pointer-events: none
+
+#submitButton 
+	border: 0px solid #A9C54C
+	border-radius: 2px
+	height: 51px
+	background-color: #A9C54C
+	color: #fff
+	text-align: center
+	width: 100%
+	font-weight: 500
+	margin: 0 auto 24px
+	font-size: 1em
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2)
+
+	&[disabled]
+		background-color: #c4c4c4
+		color: rgba(255, 255, 255, 0.6)
+
+.refuse 
+	color: #A9C54C
+	text-align: center
+	font-weight: bold
+	font-size: 13px

@@ -20,12 +20,47 @@
 </head>
 
 <body>
-	<header class="page-header" >
+
+
+
+	<div class="loader-background">
+		<div class="loader"></div>
+	</div>
+
+	<div class="form_wrapper" hidden>
+			<form>
+          <div class="group">
+            <input type="text" name="lastName" id="lastName" inputmode="verbatim" autocomplete="family-name" required>
+            <label for="lastName">Фамилия</label>
+          </div>
+          <div class="group">
+            <input type="text" name="firstName" id="firstName" inputmode="verbatim" autocomplete="given-name" required>
+            <label for="firstName">Имя</label>
+          </div>
+          <div class="group">
+            <input type="text" name="position" id="position" inputmode="verbatim" autocomplete="off" required>
+            <label for="position">Должность</label>
+          </div>
+          <div class="group">
+            <input type="text" name="email" id="email" inputmode="email" autocomplete="email" autocapitalize="none" required>
+            <label for="email">E-mail</label>
+          </div>
+          <div class="group">
+            <input type="tel" name="phoneNumber" id="phoneNumber" inputmode="tel" autocomplete="tel-national" required>
+            <label for="phoneNumber">Телефон</label>
+					</div>
+					<button id="submitButton" type="submit" disabled>Отправить</button>
+					<div class="refuse">Оказаться</div>
+				</form>
+				
+	</div>
+
+	<header class="page-header" hidden>
 		<div class="page-header-bottom"hidden>
 			<img src="img/logo.png" alt="" inline>
 		</div>
 	</header>
-	<section class="menu">
+	<section class="menu" >
 		<a class="menu_fab" href="actor:190" hidden>
 			<div class="menu_fab-title">QR сканер</div>
 		</a>
@@ -71,6 +106,9 @@
 
 
 
+
+<script src="js/common.js" inline>
+</script>
 
 </body>
 
