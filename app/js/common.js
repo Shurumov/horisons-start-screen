@@ -124,13 +124,6 @@ function ready() {
     e.oninput = changeInput;
   });
 
-  patterns = {
-    lastName: /^.{2,}$/,
-    firstName: /^.{2,}$/,
-    position: /^.{2,}$/,
-    email: /^.*@.*$/,
-    phoneNumber: /^\+?[0-9\-\(\)]{3,}$/
-  };
   form.addEventListener("submit", sendUserProfile);
   refuse.addEventListener("click", sendUserProfile);
 }
