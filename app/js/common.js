@@ -1,17 +1,18 @@
-var userData, session, userId, projectName, baseUrl, refreshToken;
+var userData, sessionId, userId, projectName, baseUrl, refreshToken;
 
-const schemaIdRegistration = "UserProfiles";
+const schemaIdRegistration = "Registration";
 const loader = document.querySelector(".loader-background");
 const form = document.querySelector("form");
 const submitButton = form.querySelector("button");
 const refuse = document.querySelector(".refuse");
 const inputs = form.querySelectorAll("input");
 const menu = document.querySelector(".menu");
+const form_wrapper = document.querySelector(".form_wrapper")
 
 function sessionFromNative(e) {
   userData = JSON.parse(e);
-  session = userData.sessionId;
-  userId = userData.userId;
+  sessionId = userData.sessionId;
+  userId = +userData.userId;
   projectName = userData.projectName;
   baseUrl = userData.baseUrl;
   refreshToken = userData.refreshToken;
@@ -20,41 +21,44 @@ function sessionFromNative(e) {
 
 function checkRegistration() {
   let url = `${baseUrl}${projectName}/objects/${schemaIdRegistration}/query`;
-  let reqBody = {
-    where: {
-      userId: userId
-    }
-  };
+  var reqBody = {
+    "where": {
+      "userId": userId
+		},
+		"include":['userId']
+	};
 
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Appercode-Session-Token": session
-    },
-    body: JSON.stringify(reqBody)
-  })
-    .then(function(response) {
-      if (response.status !== 200) {
-        return Promise.reject(new Error(response.statusText));
-      }
-      return Promise.resolve(response);
-    })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      if (data.length) {
-        menu.hidden = false;
-      } else {
-        document.querySelector(".form_wrapper").hidden = true;
-      }
-      stopLoadAnimation();
-    })
-    .catch(function(error) {
-      stopLoadAnimation();
-      console.log("error", error);
-    });
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.setRequestHeader("X-Appercode-Session-Token", sessionId);
+	
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState != 4) 
+			return;
+		if (xhr.status == 401) {
+			console.log("не удалось получить данные");
+			loginByToken()
+		} else if (xhr.status == 200) {
+			try {
+				response = JSON.parse(xhr.responseText);
+				if (response.length) {
+					menu.hidden = false;
+					form_wrapper.hidden = true;
+				} else {
+					menu.hidden = true;
+					form_wrapper.hidden = false;
+				}
+				stopLoadAnimation();
+				
+			} catch (err) {
+				console.log('Ошибка при парсинге ответа сервера.');
+			}
+		} else {
+		}
+	};
+	xhr.send(JSON.stringify(reqBody));
+
 }
 
 function sendUserProfile(e) {
@@ -64,7 +68,11 @@ function sendUserProfile(e) {
   var firstName = document.querySelector("#firstName").value;
   var position = document.querySelector("#position").value;
   var email = document.querySelector("#email").value;
-  var phoneNumber = document.querySelector("#phoneNumber").value;
+	var phoneNumber = document.querySelector("#phoneNumber").value;
+	var programSessions = document.querySelectorAll(":checked");
+	var session1 = programSessions[0].value || undefined;
+	var session2 = programSessions[1].value || undefined;
+	var session3 = programSessions.length == 3 ? programSessions[2].value : "";
 
   var url = `${baseUrl}${projectName}/objects/${schemaIdRegistration}`;
   var reqBody = {
@@ -73,32 +81,37 @@ function sendUserProfile(e) {
     firstName: firstName,
     position: position,
     email: email,
-    phoneNumber: phoneNumber
+		phoneNumber: phoneNumber,
+		session1: session1,
+		session2: session2,
+		session3: session3
   };
 
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Appercode-Session-Token": session
-    },
-    body: JSON.stringify(reqBody)
-  })
-    .then(function(response) {
-      if (response.status !== 200) {
-        return Promise.reject(new Error(response.statusText));
-      }
-      return Promise.resolve(response);
-    })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      console.log(data);
-    })
-    .catch(function(error) {
-      console.log("error", error);
-    });
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.setRequestHeader("X-Appercode-Session-Token", sessionId);
+
+	xhr.onreadystatechange = function() {
+
+		if (xhr.readyState != 4){
+			return;
+		}
+		if (xhr.status == 401) {
+			console.log("не удалось получить данные");
+		} else if (xhr.status == 200) {
+			try {
+				menu.hidden = false;
+				form_wrapper.hidden = true;
+				stopLoadAnimation()
+			} catch (err) {
+				console.log('Ошибка при парсинге ответа сервера.');
+				stopLoadAnimation()
+			}
+		} 
+	};
+
+	xhr.send(JSON.stringify(reqBody));
 }
 
 function stopLoadAnimation() {
