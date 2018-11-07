@@ -21,11 +21,21 @@
 
 <body>
 
-	
+	<header class="page-header">
+		
+		<div class="page-header-bottom">
+			<img src="img/title.png" alt="" inline>
+		</div>
+	</header>
 
 
-	<div class="loader-background" >
+	<div class="loader-background">
 		<div class="loader"></div>
+	</div>
+
+	<div class="buttons_wrapper" hidden>
+		<div class="button agree">Для участия просим пройти регистрацию</div>
+		<div class="button refuse">Без регистрации</div>
 	</div>
 
 	<div class="form_wrapper" hidden>
@@ -50,6 +60,7 @@
 				<input type="tel" name="phoneNumber" id="phoneNumber" inputmode="tel" autocomplete="tel-national" required>
 				<label for="phoneNumber">Телефон</label>
 			</div>
+			<h4>В каких сессиях вы хотите учавствовать</h4>
 			<div class="radio-inputs">
 				<input checked="checked" type="radio" id="session1a" name="session1" value="Установление границ лесничества и лесопарков. Проблемы решения">
 				<span class="radio-custom"></span>
@@ -60,7 +71,7 @@
 				<span class="radio-custom"></span>
 				<label for="session1b">Инвентаризация лесов для целей лесоуправления и лесного бизнеса</label>
 			</div>
-
+<hr>
 			<div class="radio-inputs">
 				<input checked="checked" type="radio" id="session2a" name="session2" value="Лесоустройство">
 				<span class="radio-custom"></span>
@@ -72,7 +83,7 @@
 				<span class="radio-custom"></span>
 				<label for="session2b">Информационные технологи и побразование</label>
 			</div>
-
+			<hr>
 			<div class="radio-inputs">
 				<input type="checkbox" id="session3" name="session3" value="Пленарное заседание">
 				<span class="radio-custom-check"></span>
@@ -80,7 +91,7 @@
 			</div>
 
 			<button id="submitButton" type="submit" disabled>Отправить</button>
-			<div class="refuse">Оказаться</div>
+			
 		</form>
 
 	</div>
@@ -91,9 +102,6 @@
 		</div>
 	</header>
 	<section class="menu">
-		<a class="menu_fab" href="actor:190" hidden>
-			<div class="menu_fab-title">QR сканер</div>
-		</a>
 		<div class="menu-block">
 
 			<div class="menu-block__items">
@@ -111,7 +119,7 @@
 				</a>
 				<a class="menu-block__item" href="actor:30100">
 					<div class="menu-block__item-img"><img src="img/items/about-event.png" alt="" inline></div>
-					<div class="menu-block__item-title">О форуме</div>
+					<div class="menu-block__item-title">О мероприятии</div>
 				</a>
 
 				<a class="menu-block__item" href="actor:40000">
@@ -137,8 +145,7 @@
 
 
 
-	<script src="js/common.js" inline>
-	</script>
+	<script src="js/common.js"></script>
 
 </body>
 

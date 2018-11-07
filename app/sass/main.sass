@@ -40,16 +40,15 @@ b, strong
 	&-bottom
 		height: 110px
 		padding-top: 31px
-		background: linear-gradient(#2A56AF, #3265B8, #4D98D6, #6DD5FA)
 		img
 			display: block
 			margin: 0	auto
-			max-width: 206px
+			max-width: 250px
 	img
 		width: 100%
 
 .menu
-	margin-top: 90px
+	margin-top: 10px
 	padding: 20px 1px 30px 16px
 	position: relative
 	&_fab
@@ -177,7 +176,7 @@ b, strong
 .form_wrapper
 	display: block
 	max-width: 300px
-	margin: 90px auto 20px
+	margin: 30px auto 20px
 
 form
 	width: 100%
@@ -218,17 +217,21 @@ form
 		transition: 300ms ease all
 		pointer-events: none
 
-#submitButton 
+.buttons
+	&_wrapper
+		margin-top: 90px
+		padding: 20px
+
+#submitButton, .button 
 	border: 0px solid #A9C54C
 	border-radius: 2px
-	height: 51px
 	background-color: #A9C54C
 	color: #fff
 	text-align: center
 	width: 100%
 	font-weight: 500
 	margin: 20px auto 
-	font-size: 1em
+	padding: 15px
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2)
 
 	&[disabled]
@@ -236,10 +239,7 @@ form
 		color: rgba(255, 255, 255, 0.6)
 
 .refuse 
-	color: #A9C54C
 	text-align: center
-	font-weight: bold
-	font-size: 13px
 
 .radio-inputs
 	max-width: 800px
