@@ -38,70 +38,66 @@
 		<div class="button refuse">Без регистрации</div>
 	</div>
 
-	<div class="form_wrapper" hidden>
+	<div class="form_wrapper" >
 		<form>
 			<div class="group">
-				<input type="text" name="lastName" id="lastName" inputmode="verbatim" autocomplete="family-name" required>
+				<input class="required-input" type="text" name="lastName" id="lastName" inputmode="verbatim" autocomplete="family-name" required>
 				<label for="lastName">Фамилия</label>
 			</div>
 			<div class="group">
-				<input type="text" name="firstName" id="firstName" inputmode="verbatim" autocomplete="given-name" required>
+				<input class="required-input" type="text" name="firstName" id="firstName" inputmode="verbatim" autocomplete="given-name" required>
 				<label for="firstName">Имя</label>
 			</div>
 			<div class="group">
-				<input type="text" name="position" id="position" inputmode="verbatim" autocomplete="off" required>
+				<input class="required-input" type="text" name="position" id="position" inputmode="verbatim" autocomplete="off" required>
 				<label for="position">Должность</label>
 			</div>
 			<div class="group">
-				<input type="text" name="email" id="email" inputmode="email" autocomplete="email" autocapitalize="none" required>
+				<input type="email" name="email" id="email" inputmode="email" autocomplete="email" autocapitalize="none"  >
 				<label for="email">E-mail</label>
 			</div>
 			<div class="group">
-				<input type="tel" name="phoneNumber" id="phoneNumber" inputmode="tel" autocomplete="tel-national" required>
+				<input type="tel" name="phoneNumber" id="phoneNumber" inputmode="tel" autocomplete="tel-national"  >
 				<label for="phoneNumber">Телефон</label>
 			</div>
-			<h4>В каких сессиях вы хотите учавствовать</h4>
+			<h4>В чём хотите учавствовать?</h4>
 			<div class="radio-inputs">
-				<input checked="checked" type="radio" id="session1a" name="session1" value="Установление границ лесничества и лесопарков. Проблемы решения">
+				<input class="required-input" type="radio" id="session1a" name="session1" value="Установление границ лесничества и лесопарков. Проблемы решения">
 				<span class="radio-custom"></span>
 				<label for="session1a">Установление границ лесничества и лесопарков. Проблемы решения</label>
 			</div>
 			<div class="radio-inputs">
-				<input type="radio" id="session1b" name="session1" value="Инвентаризация лесов для целей лесоуправления и лесного бизнеса">
+				<input class="required-input" type="radio" id="session1b" name="session1" value="Инвентаризация лесов для целей лесоуправления и лесного бизнеса">
 				<span class="radio-custom"></span>
 				<label for="session1b">Инвентаризация лесов для целей лесоуправления и лесного бизнеса</label>
 			</div>
 <hr>
 			<div class="radio-inputs">
-				<input checked="checked" type="radio" id="session2a" name="session2" value="Лесоустройство">
+				<input class="required-input" type="radio" id="session2a" name="session2" value="Лесоустройство">
 				<span class="radio-custom"></span>
 				<label for="session2a">Лесоустройство</label>
 			</div>
 
 			<div class="radio-inputs">
-				<input type="radio" id="session2b" name="session2" value="Информационные технологи и побразование">
+				<input class="required-input" type="radio" id="session2b" name="session2" value="Информационные технологи и побразование">
 				<span class="radio-custom"></span>
 				<label for="session2b">Информационные технологи и побразование</label>
 			</div>
 			<hr>
 			<div class="radio-inputs">
-				<input type="checkbox" id="session3" name="session3" value="Пленарное заседание">
+				<input class="required-input" type="checkbox" id="session3" name="session3" value="Пленарное заседание">
 				<span class="radio-custom-check"></span>
 				<label for="session3">Пленарное заседание</label>
 			</div>
 
-			<button id="submitButton" type="submit" disabled>Отправить</button>
+			<button id="submitButton" type="submit" disabled>Продолжить</button>
 			
 		</form>
 
 	</div>
 
-	<header class="page-header" hidden>
-		<div class="page-header-bottom" hidden>
-			<img src="img/logo.png" alt="" inline>
-		</div>
-	</header>
-	<section class="menu">
+
+	<section class="menu" hidden>
 		<div class="menu-block">
 
 			<div class="menu-block__items">

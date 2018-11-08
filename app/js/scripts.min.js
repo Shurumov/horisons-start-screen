@@ -5,7 +5,7 @@ const loader = document.querySelector(".loader-background");
 const form = document.querySelector("form");
 const submitButton = form.querySelector("button");
 const refuse = document.querySelector(".refuse");
-const inputs = form.querySelectorAll("input");
+const inputs = form.querySelectorAll(".required-input");
 const menu = document.querySelector(".menu");
 const form_wrapper = document.querySelector(".form_wrapper");
 const buttonsWrapper = document.querySelector(".buttons_wrapper");
@@ -130,9 +130,10 @@ function showForm() {
 }
 
 function changeInput() {
+  var programSessions = document.querySelectorAll("input[type=radio]:checked");
   var t = false;
   t = Array.prototype.some.call(inputs, function(item) {
-    return item.value == "";
+    return item.value == "" || programSessions.length != 2;
   });
   return t
     ? (submitButton.setAttribute("disabled", "true"), !1)
