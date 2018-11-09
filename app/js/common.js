@@ -72,7 +72,8 @@ function sendUserProfile(e) {
   var email = document.querySelector("#email").value;
   var phoneNumber = document.querySelector("#phoneNumber").value;
   var programSessions = document.querySelectorAll("input:checked");
-
+  var middleName = document.querySelector("#middleName").value;
+  var company = document.querySelector("#company").value;
   var session1, session2, session3;
 
   if (programSessions.length >= 2) {
@@ -91,6 +92,8 @@ function sendUserProfile(e) {
     userId: userId,
     lastName: lastName,
     firstName: firstName,
+    middleName: middleName,
+    company: company,
     position: position,
     email: email,
     phoneNumber: phoneNumber,
